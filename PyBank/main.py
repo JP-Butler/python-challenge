@@ -16,11 +16,8 @@ decreasedate = ''
 totalprofitlist = []
 
 
-
-
 #csvpath to access file
 csvpath = os.path.join('PyBank/Resources/budget_data.csv')
-
 
 
 #open csv file that will be analyzed
@@ -39,7 +36,7 @@ with open(csvpath) as csvfile:
     firstprofit = int(firstrow[1])
     totalprofit = int(firstrow[1])
 
-#find all rows in data & calculate average 
+#loop through all rows in data & calculate average change
     for row in csvreader:
         date = row[0]
         profit = int(row[1])
@@ -64,16 +61,7 @@ with open(csvpath) as csvfile:
     averagechange = sum(totalprofitlist) / len(totalprofitlist)
 
         
-
 #output of results
-print('Financial Analysis') 
-print('-----------------------------------')
-print('Total Months:', totalmonths)
-print('Total:','$', totalprofit)
-print('Average Change', averagechange)
-print('Greatest Increase in Profit:', increasedate,'($',greatestincrease,')')
-print('Greatest Decrease in Profits:', decreasedate,'($',greatestdecrease, ')')
-
 
 output = f"""
 Financial Analysis
@@ -91,15 +79,3 @@ textpath = os.path.join('PyBank/Analysis/Pybank Text File.txt')
 
 with open(textpath,'w') as csvfile:
     csvfile.write(output)
-#     csvwriter = csv.writer(csvfile, delimiter=',')
-
-#     #text results to be exported
-
-#     csvwriter.writerow(['Financial Analysis']) 
-#     csvwriter.writerow(['-----------------------------------'])
-#     csvwriter.writerow(['Total Months:', totalmonths])
-#     csvwriter.writerow(['Total: $', totalprofit])
-#     csvwriter.writerow(['Average Change:', averagechange])
-#     csvwriter.writerow(['Greatest Increase in Profit:', increasedate, '$',greatestincrease])
-#     csvwriter.writerow(['Greatest Decrease in Profits:', decreasedate, '$', greatestdecrease])
-#   """""""
